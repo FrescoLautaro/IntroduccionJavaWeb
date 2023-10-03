@@ -1,0 +1,12 @@
+{
+    "elements": {},
+    "attributes": {
+        "\"opcion\"": {},
+        "\"formapago\"": {},
+        "\"apellido\"": {},
+        "\"nombre\"": {},
+        "nombre": {
+            "context": "input"
+        }
+    }
+}
