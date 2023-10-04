@@ -4,44 +4,39 @@
     Author     : ET36
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Resultado</title>
+        <link rel="stylesheet" href="Styles.css"> <!-- Asegúrate de tener este enlace para cargar el CSS -->
     </head>
     <body>
-        <h1>¡Gracias por enviar sus datos!</h1>
-        <p> Nombre: <%=request.getParameter("nombre")%> </p>    <!-- Las variables nombre se definen como el parametro que recibimos del input -->
-        <p> Apellido: <%=request.getParameter("apellido")%> </p>  
-        
-        <p>Cursos Seleccionados: </p>
-        <ul>
-            <% String[] cursos= request.getParameterValues("curso"); /*Evaluamos que parametro recibimos del array de cursos*/
-            if(cursos!=null){
-                for(String curso: cursos){ //Recorremos su contenido y mostramos los cursos seleccionados en forma de lista
-                %>
-                <li><%=curso%></li> 
-                <%
-                }
-            }
-            
+        <h1>TU SELECCION</h1>
+
+        <div class="info-section">
+            <p>Nombre: <%= request.getParameter("nombre")%></p>
+        </div>
+
+        <div class="info-section">
+            <p>Apellido: <%= request.getParameter("apellido")%></p>
+        </div>
+
+        <div class="info-section">
+            <p>Cursos seleccionados</p>
+            <% String[] cursos = request.getParameterValues("curso");
+                if (cursos != null) {
+                    for (String curso : cursos) {
             %>
-        </ul>
-        
-        <p>Forma de Pago Seleccionada: 
-            <%=request.getParameter("pago")%> </p> <!-- Mostramos el parametro que recibimos del checkbox de metodo de pago -->
-        
-        </p>
-        
-           
-            
-            
-        
-        
-        
-       
-        
+            <p id="cursos"><%= curso%></p>
+            <% }
+                }
+            %>
+        </div>
+
+        <div class="info-section">
+            <p>Forma de pago seleccionada: <%= request.getParameter("pago")%></p>
+        </div>
+
     </body>
 </html>
